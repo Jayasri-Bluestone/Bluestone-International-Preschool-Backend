@@ -3,7 +3,11 @@ const cors = require("cors");
 const nodemailer = require("nodemailer");
 
 const app = express();
-app.use(cors());
+app.use(cors({
+  origin: "*", // Allows requests from any IP (Phone/PC)
+  methods: ["GET", "POST", "OPTIONS"],
+  allowedHeaders: ["Content-Type"]
+}));
 app.use(express.json());
 
 const ADMIN_EMAIL = "bluestonesoftwaredeveloper@gmail.com";
@@ -65,4 +69,4 @@ app.post("/api/admissions", async (req, res) => {
   }
 });
 
-app.listen(5000, () => console.log("Server running on http://localhost:5000"));
+app.listen(5000, "0.0.0.0", () => console.log("Server running on port 5000 (Network Accessible)"));
