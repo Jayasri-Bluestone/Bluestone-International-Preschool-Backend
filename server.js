@@ -11,6 +11,11 @@ app.use(cors({
 }));
 app.use(express.json());
 
+// Add this above your app.post route
+app.get("/", (req, res) => {
+  res.send("<h1>BlueStone Backend is Running!</h1><p>MySQL + Email Services are active.</p>");
+});
+
 // --- XAMPP MYSQL CONFIG ---
 const dbConfig = {
   host: "localhost",
